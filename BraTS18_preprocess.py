@@ -12,12 +12,12 @@ from glob import glob
 import SimpleITK as sitk
 import matplotlib.pyplot as plt
 
-from utils.mkdir import mkdir
+from module.common_module import mkdir
 
 import warnings
 warnings.filterwarnings('ignore')
 
-brats_main_dir = '/data/original_data/BraTS18/'
+brats_main_dir = '/itet-stor/himeva/net_scratch/MasterThesis-Meva/BraTS_2018_Training'
 Patient_dir = sorted(glob(brats_main_dir + '/HGG/*'))
 
 print('-' * 30)
@@ -203,9 +203,9 @@ for nb_file in range(len(Patient_dir)):
     maskVol = maskVol[cut_slice:, crop_h1: (maskVol.shape[1] - crop_h2), crop_w1:(maskVol.shape[2] - crop_w2)]
     imageVol = np.concatenate((np.expand_dims(T1Vol, axis=0), np.expand_dims(T2Vol, axis=0), np.expand_dims(FLAIRVol, axis=0), np.expand_dims(T1cVol, axis=0)), axis=0)
 
-    mkdir('data/BraTS18')
-    np.save('data/BraTS18' + '/img_%s.npy' % (str(Patient_dir[nb_file].split('Brats18_')[-1])), imageVol)
-    np.save('data/BraTS18' + '/mask_%s.npy' % (str(Patient_dir[nb_file].split('Brats18_')[-1])), maskVol)
+    mkdir('/scratch_net/pengyou/himeva/data/BraTS18')
+    np.save('/scratch_net/pengyou/himeva/data/BraTS18' + '/img_%s.npy' % (str(Patient_dir[nb_file].split('Brats18_')[-1])), imageVol)
+    np.save('/scratch_net/pengyou/himeva/data/BraTS18' + '/mask_%s.npy' % (str(Patient_dir[nb_file].split('Brats18_')[-1])), maskVol)
 
     print('BraTS2018/HGG Image process {}/{} finished'.format(nb_file, len(Patient_dir)))
 
