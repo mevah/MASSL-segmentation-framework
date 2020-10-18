@@ -45,7 +45,7 @@ Test_only = False
 
 num_epoch = 252
 
-folder_name = 'results_BraTS/'
+folder_name = '/scratch_net/pengyou/himeva/project/all_logs/massl/results_BraTS/'
 
 Val_dice = 0
 val_dice = 0

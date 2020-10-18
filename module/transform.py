@@ -16,7 +16,7 @@ Date: 22 Jan 2019
 from torchvision import transforms, utils
 from skimage import io, transform
 import numpy as np
-import elasticdeform
+#import elasticdeform
 import torch
 import module.common_module as cm
 import random
@@ -77,30 +77,30 @@ class Flip(object):
         return {'image': image.copy(), 'mask': mask.copy()}
 
 
-class Elastic(object):
-    def __init__(self, sigma=3, points=(3, 3, 3), order=1):
-        self.sigma = sigma
-        self.points = points
-        self.order = order
+# class Elastic(object):
+#     def __init__(self, sigma=3, points=(3, 3, 3), order=1):
+#         self.sigma = sigma
+#         self.points = points
+#         self.order = order
 
-    def __call__(self, sample):
+#     def __call__(self, sample):
 
-        seed = random.randint(1, 9999999)
-        np.random.seed(seed + 1)
+#         seed = random.randint(1, 9999999)
+#         np.random.seed(seed + 1)
 
-        elastic_bool = bool(random.getrandbits(1))
+#         elastic_bool = bool(random.getrandbits(1))
 
-        if elastic_bool:
-            image, mask = sample['image'], sample['mask']
+#         if elastic_bool:
+#             image, mask = sample['image'], sample['mask']
 
-            [deformed_img, deformed_mask] = elasticdeform.deform_random_grid([image, mask], axis=[(1, 2, 3), (0, 1, 2)],
-                                                                             sigma=self.sigma,
-                                                                             points=self.points,
-                                                                             order=self.order)
-            return {'image': deformed_img, 'mask': deformed_mask}
+#             [deformed_img, deformed_mask] = elasticdeform.deform_random_grid([image, mask], axis=[(1, 2, 3), (0, 1, 2)],
+#                                                                              sigma=self.sigma,
+#                                                                              points=self.points,
+#                                                                              order=self.order)
+#             return {'image': deformed_img, 'mask': deformed_mask}
 
-        else:
-            return {'image': sample['image'], 'mask': sample['mask']}
+#         else:
+#             return {'image': sample['image'], 'mask': sample['mask']}
 
 
 class Resize(object):

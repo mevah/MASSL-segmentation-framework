@@ -30,8 +30,8 @@ def BraTS18data(data_seed, data_split):
     np.random.seed(data_seed)
 
     # Create image list
-    HGG_imgList = sorted(glob('/scratch_net/pengyou/himeva/data/BraTS2018/HGG/img_*.npy'))
-    HGG_maskList = sorted(glob('/scratch_net/pengyou/himeva/data/BraTS2018/HGG/mask_*.npy'))
+    HGG_imgList = sorted(glob('/scratch_net/pengyou/himeva/data/BraTS18/img_*.npy'))
+    HGG_maskList = sorted(glob('/scratch_net/pengyou/himeva/data/BraTS18/mask_*.npy'))
 
     # Random selection for training, validation and testing
     HGG_list = [list(pair) for pair in zip(HGG_imgList, HGG_maskList)]
