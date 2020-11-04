@@ -84,7 +84,6 @@ def train_model(model, modelDataLoader, device, root_path, network_switch, crite
 
             # run training and validation alternatively
             for phase in procedure:
-
                 if phase == 'trainLabeled':
                     scheduler[0].step()
                     model.train()
